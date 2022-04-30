@@ -259,3 +259,7 @@ dockerpush-%: docker-%
 dockerfakepush-%: dockerfake-%
 	@echo '#### Starting to push target: $@'
 	docker push gcr.io/kolide-public-containers/launcher-fakedata-$*
+
+.PHONY: clean
+clean:
+	rm -rf pkg/autoupdate/assets/ pkg/autoupdate/bindata.go tools/notary/config/tuf/ build/
