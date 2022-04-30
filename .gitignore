@@ -22,10 +22,10 @@ test-cmds
 .glide/
 
 # TUF metadata
-pkg/autoupdate/assets/
-pkg/autoupdate/bindata.go
-tools/notary/config/private
-tools/notary/config/tuf
+# pkg/autoupdate/assets/
+# pkg/autoupdate/bindata.go
+# tools/notary/config/private
+# tools/notary/config/tuf
 
 # Generated assets
 pkg/packagekit/internal/assets.go
