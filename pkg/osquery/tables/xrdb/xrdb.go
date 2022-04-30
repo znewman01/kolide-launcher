@@ -26,7 +26,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var xrdbPath = "/usr/bin/xrdb"
+var xrdbPath = "xrdb"
 
 const allowedUsernameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-."
 const allowedDisplayCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789:."

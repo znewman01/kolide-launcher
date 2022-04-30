@@ -23,7 +23,7 @@ import (
 	"github.com/osquery/osquery-go/plugin/table"
 )
 
-const ioregPath = "/usr/sbin/ioreg"
+const ioregPath = "ioreg"
 
 const allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 

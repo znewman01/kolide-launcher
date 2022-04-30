@@ -24,7 +24,7 @@ func platformTables(client *osquery.ExtensionManagerClient, logger log.Logger, c
 		fscrypt_info.TablePlugin(logger),
 		dataflattentable.TablePluginExec(client, logger,
 			"kolide_nmcli_wifi", dataflattentable.KeyValueType,
-			[]string{"/usr/bin/nmcli", "--mode=multiline", "--fields=all", "device", "wifi", "list"},
+			[]string{"nmcli", "--mode=multiline", "--fields=all", "device", "wifi", "list"},
 			dataflattentable.WithKVSeparator(":")),
 		dataflattentable.TablePluginExec(client, logger, "kolide_lsblk", dataflattentable.JsonType,
 			[]string{"lsblk", "-J"},

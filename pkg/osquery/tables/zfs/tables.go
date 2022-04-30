@@ -16,8 +16,8 @@ import (
 )
 
 const (
-	zfsPath   = "/usr/sbin/zfs"
-	zpoolPath = "/usr/sbin/zpool"
+	zfsPath   = "zfs"
+	zpoolPath = "zpool"
 )
 
 const allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-.@/"

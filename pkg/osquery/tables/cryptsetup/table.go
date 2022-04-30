@@ -17,6 +17,7 @@ import (
 var cryptsetupPaths = []string{
 	"/usr/sbin/cryptsetup",
 	"/sbin/cryptsetup",
+	"cryptsetup",
 }
 
 const allowedNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-/_"

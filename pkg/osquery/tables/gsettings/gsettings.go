@@ -26,7 +26,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-const gsettingsPath = "/usr/bin/gsettings"
+const gsettingsPath = "gsettings"
 
 const allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-."
 
