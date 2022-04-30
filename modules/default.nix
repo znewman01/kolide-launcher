@@ -58,6 +58,16 @@ in {
           The osquery package to use with the service.
         '';
       };
+
+      additionalPackages = mkOption {
+        type = types.listOf types.package;
+        default = [ ];
+        description = ''
+          Additional packages that should be added to the path.
+
+          Good candidates include: zfs, glib, cryptsetup, networkmanager.
+        '';
+      };
     };
   };
 
@@ -86,6 +96,8 @@ in {
 
         '';
       };
+
+      path = cfg.additionalPackages;
     };
   };
 }
