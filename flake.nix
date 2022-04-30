@@ -6,7 +6,7 @@
     gomod2nix.inputs.nixpkgs.follows = "nixpkgs";
     nix-filter.url = "github:numtide/nix-filter";
   };
-  outputs = { nixpkgs, flake-utils, gomod2nix, nix-filter, ... }:
+  outputs = { self, nixpkgs, flake-utils, gomod2nix, nix-filter, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -33,15 +33,34 @@
           '';
           checkPhase = ""; # tests fail on nixos
           installPhase = ''
-            mkdir -p $out/{bin/lib}
+            mkdir -p $out/bin
             cp build/launcher $out/bin/
-            cp build/osquery-extension.ext $out/lib/
+            cp build/osquery-extension.ext $out/bin/
           '';
           nativeBuildInputs = with pkgs; [ go-bindata git ];
           GIT_SHA = "0000000000000000000000000000000000000000";
           GIT_BRANCH = "main";
           GIT_VERSION = version;
         };
+        # TODO: should only be x86_64-linux
+        packages.osquery = pkgs.stdenv.mkDerivation rec {
+          pname = "osquery";
+          version = "5.2.3";
+          src = pkgs.fetchurl {
+            url =
+              "https://github.com/osquery/osquery/releases/download/${version}/osquery_${version}-1.linux_amd64.deb";
+            sha256 = "sha256-RLDlNYlBXl63PEy/6gGj8T3ScJDGK4o9hp4k2Zp23vQ=";
+          };
+          sourceRoot = ".";
+          unpackCmd = "${pkgs.dpkg}/bin/dpkg-deb -x $curSrc .";
+          nativeBuildInputs = with pkgs; [ autoPatchelfHook ];
+          buildInputs = with pkgs; [ zlib ];
+          installPhase = ''
+            cp -r opt/osquery $out
+          '';
+        };
+        # TODO: should only be x86_64-linux
+        nixosModules.default = import ./modules self;
         applications.default = flake-utils.mkApp { drv = packages.default; };
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs;
