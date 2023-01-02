@@ -2,8 +2,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
-    gomod2nix.url = "github:matthewpi/gomod2nix/matthewpi";
-    gomod2nix.inputs.nixpkgs.follows = "nixpkgs";
+    gomod2nix = {
+      url = "github:nix-community/gomod2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-filter.url = "github:numtide/nix-filter";
   };
   outputs = { self, nixpkgs, flake-utils, gomod2nix, nix-filter, ... }:
@@ -11,7 +13,7 @@
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ gomod2nix.overlay ];
+          overlays = [ gomod2nix.overlays.default ];
         };
       in rec {
         packages.default = pkgs.buildGoApplication rec {
@@ -61,7 +63,7 @@
         };
         # TODO: should only be x86_64-linux
         nixosModules.default = import ./modules self;
-        applications.default = flake-utils.mkApp { drv = packages.default; };
+        apps.default = flake-utils.lib.mkApp { drv = packages.default; };
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs;
             [
