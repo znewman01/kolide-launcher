@@ -23,16 +23,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1647031991,
-        "narHash": "sha256-Sp+dTICdTo2olKiAUKplEBjLKAQYKGH5sbVsW6GPkBk=",
-        "owner": "matthewpi",
+        "lastModified": 1662501203,
+        "narHash": "sha256-4BKeqCX2zwgBiTdlc2DjGQ0CttKm0vSw0r/bdFdM/PQ=",
+        "owner": "nix-community",
         "repo": "gomod2nix",
-        "rev": "cbc478102816a0227df2469824fd46c2625db06f",
+        "rev": "89cd0675b96775aa3ee86e7c0cf5bc238dd27976",
         "type": "github"
       },
       "original": {
-        "owner": "matthewpi",
-        "ref": "matthewpi",
+        "owner": "nix-community",
         "repo": "gomod2nix",
         "type": "github"
       }
